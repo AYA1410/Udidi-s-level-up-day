@@ -1,84 +1,133 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <title>Happy Level Up Day 🎉</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: 'Arial', sans-serif;
-    }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 16px;
-      text-align: center;
-      max-width: 420px;
-      width: 90%;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      animation: pop 1s ease;
-    }
-    h1 {
-      margin-top: 0;
-      color: #ff5f7e;
-    }
-    p {
-      font-size: 16px;
-      color: #444;
-      line-height: 1.5;
-    }
-    .emoji {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-    .music-text {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #666;
-    }
-    iframe {
-      margin-top: 10px;
-    }
-    @keyframes pop {
-      from {
-        transform: scale(0.8);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Rusdi Level Up</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle, #1e1e2f, #0b0b14);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+}
+
+.card {
+  background: #111;
+  padding: 30px;
+  width: 320px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(108,92,231,0.6);
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 12px;
+  background: #6c5ce7;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #a29bfe;
+  transform: scale(1.05);
+}
+
+.envelope {
+  font-size: 60px;
+  animation: shake 1.5s infinite;
+}
+
+@keyframes shake {
+  0%,100% { transform: rotate(0); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+.gift {
+  font-size: 70px;
+  cursor: pointer;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+img {
+  max-width: 100%;
+  border-radius: 15px;
+  margin-top: 15px;
+  display: none;
+  animation: zoomIn 1s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.sparkle {
+  animation: sparkle 2s infinite;
+}
+
+@keyframes sparkle {
+  0% { text-shadow: 0 0 5px #fff; }
+  50% { text-shadow: 0 0 20px #6c5ce7; }
+  100% { text-shadow: 0 0 5px #fff; }
+}
+</style>
 </head>
+
 <body>
 
-  <div class="card">
-    <div class="emoji">🎂✨🎉</div>
-    <h1>Happy Level Up Day, Udidi!</h1>
-    <p>
-      Semoga panjang umur, sehat selalu,<br>
-      dan jadi versi terbaik dari dirimu 🌱<br>
-      Terus melangkah, terus bertumbuh.<br>
-      Hari ini milikmu 💖
-    </p>
+<audio id="music" src="music.mp3" loop></audio>
 
-    <div class="music-text">🎧 Putar lagu dulu ya</div>
+<div class="card" id="content">
+  <div class="envelope">📩</div>
+  <h2>Ada Surat</h2>
+  <p>Klik buat buka</p>
+  <button onclick="openLetter()">Buka Surat</button>
+</div>
 
-    <iframe style="border-radius:12px"
-      src="https://open.spotify.com/embed/track/6VgyRGeR4cw6yNGazjGFhu"
-      width="100%" height="152"
-      frameborder="0"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy">
-    </iframe>
-  </div>
+<script>
+function openLetter() {
+  document.getElementById("music").play();
+  document.getElementById("content").innerHTML = `
+    <h2 class="sparkle">🎉 Rusdi Level Up 🎉</h2>
+    <p style="font-size:18px">hapi biday 🥳🎂</p>
+    <button onclick="nextPage()">Next</button>
+  `;
+}
+
+function nextPage() {
+  document.getElementById("content").innerHTML = `
+    <h2>🎁 Hadiah Buat Lu</h2>
+    <div class="gift" onclick="showGift()">🎁</div>
+    <img id="foto" src="foto.jpg">
+  `;
+}
+
+function showGift() {
+  document.getElementById("foto").style.display = "block";
+}
+</script>
 
 </body>
 </html>
