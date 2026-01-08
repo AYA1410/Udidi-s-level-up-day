@@ -40,12 +40,6 @@ button {
   color: white;
   font-size: 16px;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background: #a29bfe;
-  transform: scale(1.05);
 }
 
 .envelope {
@@ -75,60 +69,51 @@ img {
   border-radius: 15px;
   margin-top: 15px;
   display: none;
-  animation: zoomIn 1s ease;
-}
-
-@keyframes zoomIn {
-  from { transform: scale(0); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
 }
 
 .sparkle {
-  animation: sparkle 2s infinite;
-}
-
-@keyframes sparkle {
-  0% { text-shadow: 0 0 5px #fff; }
-  50% { text-shadow: 0 0 20px #6c5ce7; }
-  100% { text-shadow: 0 0 5px #fff; }
+  text-shadow: 0 0 15px #6c5ce7;
 }
 </style>
 </head>
 
 <body>
 
-<div class="card" id="content">
-  <div class="envelope">📩</div>
-  <h2>Ada Surat</h2>
-  <p>Klik buat buka</p>
-  <button onclick="openLetter()">Buka Surat</button>
-</div>
+<div class="card">
 
-<script>
-function openLetter() {
-  document.getElementById("music").style.display = "block";
-  document.getElementById("content").innerHTML = `
-    <h2 class="sparkle">🎉 Rusdi Level Up 🎉</h2>
-    <p style="font-size:18px">hapi biday 🥳🎂</p>
-    <button onclick="nextPage()">Next</button>
-  `;
-}
-  
-
-    <iframe style="border-radius:12px; margin-top:15px"
+  <!-- MUSIK (TIDAK PERNAH DIGANTI) -->
+  <div id="music" style="display:none; margin-bottom:15px;">
+    <iframe style="border-radius:12px"
       src="https://open.spotify.com/embed/track/1OfUq8WcTvi1r3InrqZFP9"
       width="100%" height="152"
       frameborder="0"
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       loading="lazy">
     </iframe>
+  </div>
 
+  <!-- KONTEN (INI YANG DIGANTI) -->
+  <div id="page">
+    <div class="envelope">📩</div>
+    <h2>Ada Surat</h2>
+    <p>Klik buat buka</p>
+    <button onclick="openLetter()">Buka Surat</button>
+  </div>
+
+</div>
+
+<script>
+function openLetter() {
+  document.getElementById("music").style.display = "block";
+  document.getElementById("page").innerHTML = `
+    <h2 class="sparkle">🎉 Rusdi Level Up 🎉</h2>
+    <p>hapi biday 🥳🎂</p>
     <button onclick="nextPage()">Next</button>
   `;
 }
 
 function nextPage() {
-  document.getElementById("content").innerHTML = `
+  document.getElementById("page").innerHTML = `
     <h2>🎁 Hadiah Buat Lu</h2>
     <div class="gift" onclick="showGift()">🎁</div>
     <img id="foto" src="foto.jpg">
@@ -142,3 +127,4 @@ function showGift() {
 
 </body>
 </html>
+
