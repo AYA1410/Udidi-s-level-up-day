@@ -106,9 +106,14 @@ img {
 
 <script>
 function openLetter() {
+  document.getElementById("music").style.display = "block";
   document.getElementById("content").innerHTML = `
     <h2 class="sparkle">🎉 Rusdi Level Up 🎉</h2>
     <p style="font-size:18px">hapi biday 🥳🎂</p>
+    <button onclick="nextPage()">Next</button>
+  `;
+}
+  
 
     <iframe style="border-radius:12px; margin-top:15px"
       src="https://open.spotify.com/embed/track/1OfUq8WcTvi1r3InrqZFP9"
